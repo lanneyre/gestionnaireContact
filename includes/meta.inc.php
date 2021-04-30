@@ -28,6 +28,10 @@
             text-align: left;
             color: darkblue;
         }
+        .infos{
+            color: darkblue;
+            font-weight: bold;
+        }
         .iconCRUD{
             text-align:center;
         }

@@ -17,12 +17,12 @@
 
         if(empty($error)){
             $newContact = Contact::build($_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['tel'], $_POST['adresse'], $_POST['cp'], $_POST['ville'], $_POST['id']);
-            // if($newContact->creer()){
-            //     header("Location: index.php");
-            //     exit();
-            // } else {
-            //     $error[] = "problème de sauvegarde";
-            // }
+            if($newContact->modifier()){
+                header("Location: index.php");
+                exit();
+            } else {
+                $error[] = "problème de sauvegarde";
+            }
         }
     }
 
@@ -58,7 +58,7 @@
 
         <input type="hidden" name="id" value="<?php echo $contact->id;?>">
         <div class="btn-grp">
-            <input type="submit" value="Créer un contact" name="editContact" class="btn"> <input type="reset" value="Reset" class="btn">
+            <input type="submit" value="Editer le contact" name="editContact" class="btn"> <input type="reset" value="Reset" class="btn">
         </div>
     </form>
 </body>

@@ -105,5 +105,21 @@
             // $req = $conn->prepare($sql);
             // return $req->execute([$this->nom, $this->prenom, $this->mail, $this->tel, $this->adresse, $this->cp, $this->ville]);
         }
+
+        public function modifier(){
+            $conn = self::connexion();
+
+            $sql = "UPDATE `contact` SET `nom` = :nom, `prenom` = :prenom, `mail` = :mail, `tel` = :tel, `adresse` = :adresse, `cp` = :cp, `ville` = :ville WHERE `id` = :id";
+            $req = $conn->prepare($sql);
+            $req->bindValue(":nom", $this->nom);
+            $req->bindValue(":prenom", $this->prenom);
+            $req->bindValue(":mail", $this->mail);
+            $req->bindValue(":tel", $this->tel);
+            $req->bindValue(":adresse", $this->adresse);
+            $req->bindValue(":cp", $this->cp);
+            $req->bindValue(":ville", $this->ville);
+            $req->bindValue(":id", $this->id);
+            return $req->execute();
+        }
     }
     
