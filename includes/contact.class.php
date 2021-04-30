@@ -30,6 +30,21 @@
             $this->$key = $value;
         }
 
+        public static function getById($id){
+            if(is_numeric($id)){
+                $conn = self::connexion();
+
+                $sql = "SELECT * FROM `contact` WHERE `id`= ? LIMIT 1";
+                $req = $conn->prepare($sql);
+                $req->setFetchMode(PDO::FETCH_CLASS, 'Contact');
+                $req->execute([$id]);
+                return $req->fetch();
+            } 
+
+            return false;
+            
+        }
+
         public static function afficherTous(){
             $conn = self::connexion();
 
