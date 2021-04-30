@@ -121,5 +121,14 @@
             $req->bindValue(":id", $this->id);
             return $req->execute();
         }
+
+        public function delete(){
+            $conn = self::connexion();
+
+            $sql = "DELETE FROM `contact` WHERE `id` = :id";
+            $req = $conn->prepare($sql);
+            $req->bindValue(":id", $this->id);
+            return $req->execute();
+        }
     }
     

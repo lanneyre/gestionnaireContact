@@ -13,6 +13,21 @@
 </head>
 <body>
     <h1>Gestionnaire de contact <small><a href="creer.php"><i class="fas fa-plus"></i></a></small></h1>
+    <?php
+    if(!empty($_GET["suppr"]) && $_GET["suppr"] != "Ok"){
+    ?>
+    <div class="error">
+        <?php echo $_GET["suppr"];?>
+    </div>
+    <?php } ?>
+
+    <?php
+    if(!empty($_GET["statut"]) && $_GET["statut"] == "Ok"){
+    ?>
+    <div class="success">
+        Tout s'est bien passé.
+    </div>
+    <?php } ?>
     <table id="ContactTable">
         <thead>
             <tr>

@@ -7,7 +7,7 @@
         if(empty($error)){
             $newContact = Contact::build($_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['tel'], $_POST['adresse'], $_POST['cp'], $_POST['ville']);
             if($newContact->creer()){
-                header("Location: index.php");
+                header("Location: index.php?statut=Ok");
                 exit();
             } else {
                 $error[] = "problème de sauvegarde";

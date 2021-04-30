@@ -64,4 +64,13 @@
             margin-bottom: 20px;
             color: whitesmoke;
         }
+        .success{
+            width: 50%;
+            margin: 0 auto;
+            background-color: darkolivegreen;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: whitesmoke;
+        }
     </style>
