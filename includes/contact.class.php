@@ -47,6 +47,31 @@
             } 
         }
 
+        public static function checkData($data){
+            $error = [];
+            if(empty($data['nom'])){
+                $error[] = "Le nom est obligatoire";
+            }
+            if(empty($data['prenom'])){
+                $error[] = "Le prénom est obligatoire";
+            }
+            if(!empty($data['mail']) && !filter_var($data['mail'], FILTER_VALIDATE_EMAIL)){
+                $error[] = "Le mail est mal formé";
+            }
+            if(!empty($data['tel']) && !preg_match("/^(0|\+[0-9]{2})[1-9]([-. ]?[0-9]{2}){4}$/", $data['tel'])){
+                $error[] = "Le téléphone est mal formé";
+            }
+            if(!empty($data['cp']) && !preg_match("/^[0-9]{5}$/", $data['cp'])){
+                $error[] = "Le cp est mal formé";
+            }
+            if(isset($data['id'])){
+                if(empty($data['id'])){
+                    $error[] = "De quel contact parlez-vous ?";
+                }
+            }
+            return $error;
+        }
+
         public function creer(){
             $conn = self::connexion();
 

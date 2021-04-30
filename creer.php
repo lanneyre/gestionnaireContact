@@ -2,23 +2,7 @@
     require_once("includes/contact.class.php");
 
     if(isset($_POST['addContact'])){
-        $error = [];
-
-        if(empty($_POST['nom'])){
-            $error[] = "Le nom est obligatoire";
-        }
-        if(empty($_POST['prenom'])){
-            $error[] = "Le prénom est obligatoire";
-        }
-        if(!empty($_POST['mail']) && !filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
-            $error[] = "Le mail est mal formé";
-        }
-        if(!empty($_POST['tel']) && !preg_match("/^(0|\+[0-9]{2})[1-9]([-. ]?[0-9]{2}){4}$/", $_POST['tel'])){
-            $error[] = "Le téléphone est mal formé";
-        }
-        if(!empty($_POST['cp']) && !preg_match("/^[0-9]{5}$/", $_POST['cp'])){
-            $error[] = "Le cp est mal formé";
-        }
+        $error = Contact::checkData($_POST);
 
         if(empty($error)){
             $newContact = Contact::build($_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['tel'], $_POST['adresse'], $_POST['cp'], $_POST['ville']);

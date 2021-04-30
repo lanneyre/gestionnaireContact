@@ -51,4 +51,13 @@
         .btn{
             width: 20%;
         }
+        .error{
+            width: 50%;
+            margin: 0 auto;
+            background-color: rgba(255, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            color: whitesmoke;
+        }
     </style>
